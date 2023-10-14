@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
-import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootParamStack } from '../../Main';
 import Textfield from '../common/Textfield';
@@ -39,7 +38,7 @@ export default ({ navigation }: AuthPageProps) => {
     }
 
     const signInWithFacebook = async () => {
-        await LoginManager.logInWithPermissions(['public_profile'])
+        console.log('need to be implemented')
     }
 
     const registerAccount = () => {
@@ -62,7 +61,7 @@ export default ({ navigation }: AuthPageProps) => {
         {!isLoginMode &&
             <Textfield value={confirmPassword} setValue={setConfirmPassword} label="Confirm Password" password />} 
         </View>
-        <TouchableOpacity onPress={signIn} style={styles.primaryButton}>
+        <TouchableOpacity onPress={performPrimaryAction} style={styles.primaryButton}>
             <Text>{`Sign ${isLoginMode ? 'In' : 'Up'}`}</Text>
         </TouchableOpacity>
     </View>
