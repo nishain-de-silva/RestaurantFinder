@@ -25,8 +25,9 @@ export default forwardRef<TextInput, TextFieldProps>(({ value,
     }
 
     return <View style={styles.inputRow}>
+        <Text>{label}</Text>
+            
         <View style={styles.textInputWrapper}>
-            <Text>{label}</Text>
             <TextInput ref={ref} style={styles.inputField}
                 secureTextEntry={password}
                 autoCapitalize="none"
@@ -41,24 +42,19 @@ export default forwardRef<TextInput, TextFieldProps>(({ value,
 
 const styles = StyleSheet.create({
     inputRow: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginVertical: 12,
-        // flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginTop: 12,    
         marginHorizontal: 12
     },
     textInputWrapper: {
-        // flex: 1,
-        alignItems: 'center',
-        flexDirection: 'row',
-        marginStart: 12,
+        marginTop: 10,
+        flexDirection: 'row'
     },
     errorMessage: {
-        padding: 10,
+        paddingHorizontal: 10,
         color: 'red'
     },
     inputField: {
-        marginStart: 12,
         flex: 1,
         backgroundColor: 'white',
         padding: 12,

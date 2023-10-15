@@ -5,7 +5,7 @@ import { DashboardNavigatorScreenProps } from "./Dashboard"
 import axios from "axios"
 import GetLocation from "react-native-get-location"
 import emptyIcon from "../assets/emptyWeather.png"
-import MessageSnack from "../common/MessageSnack"
+import MessageSnack from "../components/MessageSnack"
 import Config from "../Config"
 import mockData from '../assets/sampleData.json'
 import WeatherItem from "../components/WeatherItem"

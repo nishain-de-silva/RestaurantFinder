@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootParamStack } from '../../Main';
 import Textfield from '../common/Textfield';
-import MessageSnack from '../common/MessageSnack';
+import MessageSnack from '../components/MessageSnack';
+import FacebookIcon from '../assets/facebook.png'
+
 type AuthPageProps = NativeStackScreenProps<RootParamStack, 'auth'>
 
 export default ({ navigation }: AuthPageProps) => {
@@ -89,38 +91,44 @@ export default ({ navigation }: AuthPageProps) => {
     }
 
     return <View style={styles.root}>
-        <View style={styles.innerContent}>
-            <Text style={{ fontSize: 25 }}>{`Sign ${isLoginMode ? 'in' : 'up'}`}</Text>
-            {!isLoginMode &&
-                <Textfield value={username} setValue={setUsername} label="Username" />}
-            <Textfield
-                value={email}
-                email
-                error={validateEmail(email)}
-                errorMessage='Email should be in valid format'
-                setValue={setEmail}
-                label="Email" />
-            <Textfield value={password} setValue={setPassword} label="Password" password />
-            {!isLoginMode &&
+        <View style={{ backgroundColor: 'white', width: '90%', padding: 10, borderRadius: 15, alignItems: 'center' }}>
+            <View style={styles.innerContent}>
+                <Text style={{ fontSize: 25 }}>{`Sign ${isLoginMode ? 'in' : 'up'}`}</Text>
+                {!isLoginMode &&
+                    <Textfield value={username} setValue={setUsername} label="Username" />}
                 <Textfield
-                    value={confirmPassword}
-                    setValue={setConfirmPassword}
-                    error={confirmPassword != password}
-                    errorMessage='confirm password and password must match'
-                    label="Confirm Password" password />}
-        </View>
-        <TouchableOpacity onPress={performPrimaryAction} style={styles.primaryButton}>
-            <Text>{`Sign ${isLoginMode ? 'In' : 'Up'}`}</Text>
-        </TouchableOpacity>
-        <View style={styles.seocondaryOptionPanel}>
-            <Text>{isLoginMode ? "No account ?" : "Have account ?"}</Text>
-            <TouchableOpacity onPress={swapMode}>
-                <Text style={styles.secondaryButton}>{isLoginMode ? "Register" : "Login"}</Text>
+                    value={email}
+                    email
+                    error={validateEmail(email)}
+                    errorMessage='Email should be in valid format'
+                    setValue={setEmail}
+                    label="Email" />
+                <Textfield value={password} setValue={setPassword} label="Password" password />
+                {!isLoginMode &&
+                    <Textfield
+                        value={confirmPassword}
+                        setValue={setConfirmPassword}
+                        error={confirmPassword != password}
+                        errorMessage='confirm password and password must match'
+                        label="Confirm Password" password />}
+            </View>
+            <TouchableOpacity onPress={performPrimaryAction} style={styles.primaryButton}>
+                <Text style={{ color: 'white' }}>{`Sign ${isLoginMode ? 'In' : 'Up'}`}</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.facebookButton} onPress={signInWithFacebook}>
+                <Image source={FacebookIcon} style={styles.facebookIcon} />
+                <Text style={{ color: 'white' }}>Sign with facebook</Text>
+            </TouchableOpacity>
+            <View style={styles.secondaryOptionPanel}>
+                <Text>{isLoginMode ? "No account ?" : "Have account ?"}</Text>
+                <TouchableOpacity onPress={swapMode}>
+                    <Text style={styles.secondaryButton}>{isLoginMode ? "Register" : "Login instead"}</Text>
+                </TouchableOpacity>
+            </View>
         </View>
         <View>
         </View>
-        <MessageSnack 
+        <MessageSnack
             message={errorMessage}
             setMessage={setErrorMessage}
             duration={5000}
@@ -130,16 +138,17 @@ export default ({ navigation }: AuthPageProps) => {
 
 const styles = StyleSheet.create({
     root: {
+        backgroundColor: '#b13354',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%'
     },
-    seocondaryOptionPanel: {
+    secondaryOptionPanel: {
         flexDirection: 'row',
         marginVertical: 12
     },
     secondaryButton: {
-        color: 'blue',
+        color: '#b13354',
         marginStart: 12,
         fontWeight: 'bold'
     },
@@ -148,9 +157,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12
     },
     primaryButton: {
+        marginTop: 12,
         padding: 12,
         borderRadius: 10,
-        backgroundColor: '#45d1df',
-        color: 'white'
+        backgroundColor: '#b13354',
+    },
+    facebookIcon: {
+        height: 30,
+        width: 30,
+        marginEnd: 12,
+        tintColor: 'white'
+    },
+    facebookButton: {
+        borderRadius: 10,
+        marginVertical: 10,
+        padding: 10,
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#3b5998'
     }
 })

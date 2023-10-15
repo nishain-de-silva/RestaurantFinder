@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { useColor, useTextColor } from "./utils";
+import { useColor, useTextColor } from "../common/utils";
 export type MessageSnackProps = {
     message: string | null,
     duration?: number,
