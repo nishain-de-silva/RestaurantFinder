@@ -566,6 +566,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
+  - FirebaseCore
   - Flipper (= 0.182.0)
   - Flipper-Boost-iOSX (= 1.76.0.1.11)
   - Flipper-DoubleConversion (= 3.2.0.1)
@@ -815,13 +816,13 @@ SPEC CHECKSUMS:
   ReactCommon: dd03c17275c200496f346af93a7b94c53f3093a4
   ReactNativeGetLocation: 87f83bee4dfecc88772de04afd076d9ae265cc42
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  RNFBApp: 082df9f8ffba99f23f7aee3ecb64df703e7e1adb
-  RNFBAuth: b055663339aef8ce9d63cd5d03e2ea5360a3aca2
+  RNFBApp: cc9384746945ac0eedd4759171a8abb4c4c5309d
+  RNFBAuth: cf84aa347759beb4356bf79a3092c954ecbc449a
   RNScreens: 85d3880b52d34db7b8eeebe2f1a0e807c05e69fa
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: b76f1acfda8212aa16b7e26bcce3983230c82603
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: a0e430fea270d1220cda721f052519ffbb28538e
+PODFILE CHECKSUM: 84668934b8873cd63ecaeace4edd8d6a16673f70
 
 COCOAPODS: 1.13.0

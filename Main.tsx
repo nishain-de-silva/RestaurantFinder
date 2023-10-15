@@ -14,7 +14,9 @@ const Stack = createNativeStackNavigator<RootParamStack>()
 
 export default (): Element => {
     return <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+            headerShown: false
+        }}>
             <Stack.Screen name="auth" component={Auth} />
             <Stack.Screen name="dashboard" component={Dashboard} />
         </Stack.Navigator>

@@ -1,32 +1,65 @@
 import React, { forwardRef } from "react"
-import { StyleSheet, Text, TextInput, View } from "react-native"
+import { StyleSheet, Text, TextInput, TextInputIOSProps, TextInputProps, View } from "react-native"
 type TextFieldProps = {
     label: string,
-    value: string|null
-    setValue: Function,
-    password?: boolean
+    value: string | undefined
+    setValue: TextInputProps['onChangeText'],
+    password?: boolean,
+    email?: boolean,
+    error?: boolean,
+    errorMessage?: string
 }
 
-export default forwardRef<TextInput, TextFieldProps>(({ label, password }, ref) => {
+export default forwardRef<TextInput, TextFieldProps>(({ value,
+    setValue,
+    label,
+    password,
+    email,
+    error = false,
+    errorMessage
+}, ref) => {
+    const getInputType = (): TextInputProps['textContentType'] => {
+        if (password) return 'password'
+        else if (email) return 'emailAddress'
+        return undefined
+    }
+
     return <View style={styles.inputRow}>
-        <Text>{label}</Text>
-        <TextInput ref={ref}style={styles.inputField}
-            textContentType={password ? "password" : undefined}
-            placeholder={label}
-        />
-    </View> 
+        <View style={styles.textInputWrapper}>
+            <Text>{label}</Text>
+            <TextInput ref={ref} style={styles.inputField}
+                secureTextEntry={password}
+                autoCapitalize="none"
+                value={value}
+                onChangeText={setValue}
+                placeholder={label}
+            />
+        </View>
+        {error && <Text style={styles.errorMessage}>{errorMessage}</Text>}
+    </View>
 })
 
 const styles = StyleSheet.create({
     inputRow: {
         alignItems: 'center',
+        justifyContent: 'center',
         marginVertical: 12,
-        flexDirection: 'row',
+        // flexDirection: 'row',
         marginHorizontal: 12
     },
-    inputField: {
-        flex: 1,
+    textInputWrapper: {
+        // flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
         marginStart: 12,
+    },
+    errorMessage: {
+        padding: 10,
+        color: 'red'
+    },
+    inputField: {
+        marginStart: 12,
+        flex: 1,
         backgroundColor: 'white',
         padding: 12,
         color: 'black',

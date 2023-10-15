@@ -1,5 +1,9 @@
-import { useColorScheme } from "react-native"
+import {useColorScheme } from "react-native"
 
 export function useColor(lightColor: string, darkColor: string): string {
-    return useColorScheme() == 'light' ? lightColor : darkColor
+    return useColorScheme() === 'light' ? lightColor : darkColor
+}
+
+export function useTextColor(): string {
+    return useColorScheme() === 'light' ? 'black' : 'white'
 }

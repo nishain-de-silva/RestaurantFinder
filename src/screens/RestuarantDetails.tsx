@@ -5,13 +5,14 @@ import { DashboardNavigatorScreenProps } from "./Dashboard"
 import GetLocation from 'react-native-get-location'
 import MapView, { LatLng, Marker } from "react-native-maps"
 import axios, { Axios } from "axios"
+
 type ResturantDetailScreenProps = BottomTabScreenProps<DashboardNavigatorScreenProps, 'resturants'>
 type CurrentLocationType = {
     latitude: number,
     longitude: number
 }
-const GOOGLE_PLACES_API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
 
+const GOOGLE_PLACES_API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
 console.log({ GOOGLE_PLACES_API_KEY })
 
 export default () => {

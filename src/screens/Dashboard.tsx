@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootParamStack } from "../../Main"
 import React from "react"
@@ -18,15 +18,19 @@ export type DashboardNavigatorScreenProps = {
 const Tab = createBottomTabNavigator<DashboardNavigatorScreenProps>()
 
 export default ({ route }: DashboardPageProps) => {
+    const renderTabIcon = (routeName: string): BottomTabNavigationOptions['tabBarIcon'] => {
+        return ({ size }) => <Image
+            source={routeName == 'weather' ? weatherIcon : resturantIcon}
+            height={size}
+            width={size}
+        />
+    }
+
     return <View>
         <Text>{`Welcome ${route.params.username}`}</Text>
         <Tab.Navigator
             screenOptions={({ route }) => ({
-                tabBarIcon: ({ size }) => (<Image 
-                    source={route.name == 'weather' ? weatherIcon : resturantIcon}
-                    height={size}
-                    width={size}
-                />),
+                tabBarIcon: renderTabIcon(route.name),
                 tabBarActiveTintColor:"blue",
                 tabBarInactiveTintColor:"gray"
             })}

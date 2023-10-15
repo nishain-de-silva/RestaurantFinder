@@ -6,8 +6,8 @@ import axios from "axios"
 import GetLocation from "react-native-get-location"
 
 type WeatherDetailScreenProps = BottomTabScreenProps<DashboardNavigatorScreenProps, 'weather'>
-const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY
 
+const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY
 console.log({ WEATHER_API_KEY })
 export default ({ route }: WeatherDetailScreenProps) => {
     const [weatherData, setWeatherData] = useState([])
