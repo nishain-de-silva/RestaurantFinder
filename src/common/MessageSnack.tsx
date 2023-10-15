@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { useTextColor } from "./utils";
+import { useColor, useTextColor } from "./utils";
 export type MessageSnackProps = {
     message: string | null,
     duration?: number
@@ -8,25 +8,25 @@ export type MessageSnackProps = {
 export default ({ message, duration = 2000 }: MessageSnackProps) => {
     const [showMessage, setShowMessage] = useState(false)
     useEffect(() => {
-        if (showMessage == null) return
+        if (!message) return
         setShowMessage(true)
         setTimeout(() => {
-            setShowMessage(true)
+            setShowMessage(false)
         }, duration)
     }, [message])
+    const textColor = useColor('white', 'black')
     return showMessage ? <View style={styles.snackbarContainer}>
-        <Text style={{ color: useTextColor() }}>{message}</Text>
+        <Text style={{ color: textColor }}>{message}</Text>
     </View> : null
 }
 
 const styles = StyleSheet.create({
     snackbarContainer: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 30,
         padding: 10,
         borderRadius: 5,
-        width: '100%',
-        margin: 10,
+        width: '90%',
         backgroundColor: 'black'
     }
 })

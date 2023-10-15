@@ -70,10 +70,14 @@ export default ({ navigation }: AuthPageProps) => {
 
     const registerAccount = () => {
         if (!isPasswordStrong()) {
+            console.log('called this point')
             setErrorMessage('Password has to 8 characters long and should include number and capital letter')
             return
         }
-        if (password != confirmPassword) return
+        if (password != confirmPassword) {
+            setErrorMessage('Password does not match')
+            return
+        }
         if (!(isPasswordStrong() && password == confirmPassword)) return
         auth().createUserWithEmailAndPassword(email, password)
             .then((result) => {
@@ -116,7 +120,7 @@ export default ({ navigation }: AuthPageProps) => {
         </View>
         <View>
         </View>
-        <MessageSnack message={errorMessage} />
+        <MessageSnack message={errorMessage} duration={5000} />
     </View>
 }
 
