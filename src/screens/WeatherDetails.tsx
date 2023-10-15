@@ -75,9 +75,3 @@ export default ({ route }: WeatherDetailScreenProps) => {
             setMessage={setSnackBarMessage} />
     </View>
 }
-
-const styles = StyleSheet.create({
-    root: {
-        height: '100%'
-    }
-})

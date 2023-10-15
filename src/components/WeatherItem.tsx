@@ -37,9 +37,9 @@ export default ({ item }: WeatherItemParams) => {
                 <Image source={wind} style={smallIconStyle} />
                 <Text style={TextStyle(isDarkMode)}>{`Wind speed ${item.windSpeed} m/s ${item.windDirection} deg`}</Text>
             </View>
-            <View style={styles.windCell}>
+            <View style={[styles.windCell, { marginTop: 10 }]}>
                 <Image source={compass} style={smallIconStyle} />
-                <Text style={TextStyle(isDarkMode)}>{`${item.windDirection} deg`}</Text>
+                <Text style={TextStyle(isDarkMode)}>{`Wind direction ${item.windDirection} deg`}</Text>
             </View>
 
         </View>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     },
     smallIcon: {
         marginRight: 12,
-        height: 30,
-        width: 30
+        height: 25,
+        width: 25
     }
 })

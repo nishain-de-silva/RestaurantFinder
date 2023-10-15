@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View, useColorScheme } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View, useColorScheme } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootParamStack } from '../../Main';
@@ -18,6 +18,7 @@ export default ({ navigation }: AuthPageProps) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
+    const [facebookSignInLoading, setFacebookSignInLoading] = useState(false)
 
     const navigateToDashBoard = (username: string | null) => {
         navigation.navigate('dashboard', { username: username || 'user' })
@@ -49,6 +50,8 @@ export default ({ navigation }: AuthPageProps) => {
             console.log('User cancelled the login process')
             return
         }
+
+        setFacebookSignInLoading(true)
         // Once signed in, get the users AccessToken
         const data = await AccessToken.getCurrentAccessToken();
 
@@ -62,6 +65,7 @@ export default ({ navigation }: AuthPageProps) => {
 
         // Sign-in the user with the credential
         auth().signInWithCredential(facebookCredential).then((result) => {
+            setFacebookSignInLoading(false)
             navigateToDashBoard(result.user.displayName)
         });
     }
@@ -138,13 +142,23 @@ export default ({ navigation }: AuthPageProps) => {
                 <Text style={{ color: 'white' }}>{`Sign ${isLoginMode ? 'In' : 'Up'}`}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.facebookButton} onPress={signInWithFacebook}>
-                <Image source={FacebookIcon} style={styles.facebookIcon} />
-                <Text style={{ color: 'white' }}>Sign with facebook</Text>
+                {facebookSignInLoading ?
+                    <ActivityIndicator 
+                        style={styles.facebookLoadingIndicator}
+                        size={'small'}
+                        color={'white'}
+                    />
+                    : <>
+                        <Image source={FacebookIcon} style={styles.facebookIcon} />
+                        <Text style={{ color: 'white' }}>Sign with facebook</Text>
+                    </>
+                }
+
             </TouchableOpacity>
             <View style={styles.secondaryOptionPanel}>
                 <Text style={TextStyle(darkMode)}>{isLoginMode ? "No account ?" : "Have account ?"}</Text>
                 <TouchableOpacity onPress={swapMode}>
-                    <Text style={[styles.secondaryButton, { color: darkMode ? '#f4aac2' : '#b13354'}]}>{isLoginMode ? "Register" : "Login instead"}</Text>
+                    <Text style={[styles.secondaryButton, { color: darkMode ? '#f4aac2' : '#b13354' }]}>{isLoginMode ? "Register" : "Login instead"}</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -194,6 +208,9 @@ const styles = StyleSheet.create({
         width: 30,
         marginEnd: 12,
         tintColor: 'white'
+    },
+    facebookLoadingIndicator: {
+        marginHorizontal: 20
     },
     facebookButton: {
         borderRadius: 10,
