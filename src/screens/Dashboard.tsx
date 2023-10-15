@@ -3,11 +3,12 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootParamStack } from "../../Main"
 import React from "react"
 import auth from '@react-native-firebase/auth'
-import { Button, Image, Text, View } from "react-native"
+import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import WeatherDetails from "./WeatherDetails"
 import RestuarantDetails from "./RestuarantDetails"
 import weatherIcon from '../assets/weather.png'
 import resturantIcon from '../assets/restaurant.png'
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 type DashboardPageProps = NativeStackScreenProps<RootParamStack, 'dashboard'>
 
@@ -27,21 +28,26 @@ export default ({ route, navigation }: DashboardPageProps) => {
     }
 
     const signOut = async () => {
+        if (auth().currentUser?.providerData[0].providerId == 'facebook.com')
+            LoginManager.logOut()
         await auth().signOut()
+
         navigation.navigate('auth')
     }
-    
+
     return <Tab.Navigator
         screenOptions={({ route: tabRoute }) => ({
             tabBarIcon: renderTabIcon(tabRoute.name),
             tabBarActiveTintColor: "blue",
             tabBarInactiveTintColor: "gray",
             headerTitle: `Welcome ${route.params.username}`,
-            headerRight: () => (<Button 
-                onPress={signOut}
-                title="Sign out"
-                color="black"
-            />)
+            headerRight: () => <TouchableOpacity
+                onPress={signOut}>
+                <Text
+                    style={styles.signOutButton}>
+                    Sign out
+                </Text>
+            </TouchableOpacity>
         })}
         initialRouteName="resturants"
     >
@@ -49,3 +55,11 @@ export default ({ route, navigation }: DashboardPageProps) => {
         <Tab.Screen name="resturants" component={RestuarantDetails} />
     </Tab.Navigator>
 }
+
+const styles = StyleSheet.create({
+    signOutButton: {
+        color: '#b13354',
+        fontWeight: 'bold',
+        padding: 10
+    }
+})

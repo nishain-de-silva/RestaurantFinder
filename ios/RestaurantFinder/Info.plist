@@ -51,5 +51,21 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<key>CFBundleURLTypes</key>
+	<array>
+	<dict>
+	<key>CFBundleURLSchemes</key>
+	<array>
+		<string>fb700271698619571</string>
+	</array>
+	</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>700271698619571</string>
+	<key>FacebookClientToken</key>
+	<string>8d4ec173b6abcd41bd83c31205702997</string>
+	<key>FacebookDisplayName</key>
+	<string>RestaurantFinder</string>
 </dict>
 </plist>

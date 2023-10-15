@@ -6,6 +6,7 @@ import { RootParamStack } from '../../Main';
 import Textfield from '../common/Textfield';
 import MessageSnack from '../components/MessageSnack';
 import FacebookIcon from '../assets/facebook.png'
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 type AuthPageProps = NativeStackScreenProps<RootParamStack, 'auth'>
 
@@ -42,7 +43,26 @@ export default ({ navigation }: AuthPageProps) => {
     }
 
     const signInWithFacebook = async () => {
-        console.log('need to be implemented')
+        const result = await LoginManager.logInWithPermissions(['public_profile']);
+        if (result.isCancelled) {
+            console.log('User cancelled the login process')
+            return
+        }
+        // Once signed in, get the users AccessToken
+        const data = await AccessToken.getCurrentAccessToken();
+    
+
+        if (!data) {
+            console.log('Something went wrong obtaining access token')
+            return
+        }
+        // Create a Firebase credential with the AccessToken
+        const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+        // Sign-in the user with the credential
+        auth().signInWithCredential(facebookCredential).then((result) => {
+            navigateToDashBoard(result.user.displayName)
+        });
     }
 
     const swapMode = () => {

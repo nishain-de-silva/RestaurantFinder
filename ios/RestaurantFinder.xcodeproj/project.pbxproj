@@ -42,6 +42,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-RestaurantFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantFinder.release.xcconfig"; path = "Target Support Files/Pods-RestaurantFinder/Pods-RestaurantFinder.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-RestaurantFinder-RestaurantFinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantFinder-RestaurantFinderTests.debug.xcconfig"; path = "Target Support Files/Pods-RestaurantFinder-RestaurantFinderTests/Pods-RestaurantFinder-RestaurantFinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-RestaurantFinder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RestaurantFinder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2FFE6C2ADC0AB9008C446F /* RestaurantFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RestaurantFinder.entitlements; path = RestaurantFinder/RestaurantFinder.entitlements; sourceTree = "<group>"; };
 		6F399DE62ADAD7B100C33B8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RestaurantFinder/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-RestaurantFinder-RestaurantFinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantFinder-RestaurantFinderTests.release.xcconfig"; path = "Target Support Files/Pods-RestaurantFinder-RestaurantFinderTests/Pods-RestaurantFinder-RestaurantFinderTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 		13B07FAE1A68108700A75B9A /* RestaurantFinder */ = {
 			isa = PBXGroup;
 			children = (
+				6F2FFE6C2ADC0AB9008C446F /* RestaurantFinder.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -503,6 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RestaurantFinder/RestaurantFinder.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RestaurantFinder/Info.plist;
@@ -530,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RestaurantFinder/RestaurantFinder.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = RestaurantFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
