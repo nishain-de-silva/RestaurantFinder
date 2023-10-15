@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View, useColorScheme } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootParamStack } from '../../Main';
@@ -7,6 +7,7 @@ import Textfield from '../common/Textfield';
 import MessageSnack from '../components/MessageSnack';
 import FacebookIcon from '../assets/facebook.png'
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+import { TextStyle } from '../common/utils';
 
 type AuthPageProps = NativeStackScreenProps<RootParamStack, 'auth'>
 
@@ -50,7 +51,7 @@ export default ({ navigation }: AuthPageProps) => {
         }
         // Once signed in, get the users AccessToken
         const data = await AccessToken.getCurrentAccessToken();
-    
+
 
         if (!data) {
             console.log('Something went wrong obtaining access token')
@@ -92,7 +93,6 @@ export default ({ navigation }: AuthPageProps) => {
 
     const registerAccount = () => {
         if (!isPasswordStrong()) {
-            console.log('called this point')
             setErrorMessage('Password has to 8 characters long and should include number and capital letter')
             return
         }
@@ -110,10 +110,12 @@ export default ({ navigation }: AuthPageProps) => {
             })
     }
 
+    const darkMode = useColorScheme() === 'dark'
+
     return <View style={styles.root}>
-        <View style={{ backgroundColor: 'white', width: '90%', padding: 10, borderRadius: 15, alignItems: 'center' }}>
+        <View style={[styles.cardContent, { backgroundColor: darkMode ? 'black' : 'white' }]}>
             <View style={styles.innerContent}>
-                <Text style={{ fontSize: 25 }}>{`Sign ${isLoginMode ? 'in' : 'up'}`}</Text>
+                <Text style={{ fontSize: 25, color: darkMode ? 'white' : 'black' }}>{`Sign ${isLoginMode ? 'in' : 'up'}`}</Text>
                 {!isLoginMode &&
                     <Textfield value={username} setValue={setUsername} label="Username" />}
                 <Textfield
@@ -140,9 +142,9 @@ export default ({ navigation }: AuthPageProps) => {
                 <Text style={{ color: 'white' }}>Sign with facebook</Text>
             </TouchableOpacity>
             <View style={styles.secondaryOptionPanel}>
-                <Text>{isLoginMode ? "No account ?" : "Have account ?"}</Text>
+                <Text style={TextStyle(darkMode)}>{isLoginMode ? "No account ?" : "Have account ?"}</Text>
                 <TouchableOpacity onPress={swapMode}>
-                    <Text style={styles.secondaryButton}>{isLoginMode ? "Register" : "Login instead"}</Text>
+                    <Text style={[styles.secondaryButton, { color: darkMode ? '#f4aac2' : '#b13354'}]}>{isLoginMode ? "Register" : "Login instead"}</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -163,12 +165,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: '100%'
     },
+    cardContent: {
+        width: '90%',
+        padding: 10,
+        borderRadius: 15,
+        alignItems: 'center'
+    },
     secondaryOptionPanel: {
         flexDirection: 'row',
         marginVertical: 12
     },
     secondaryButton: {
-        color: '#b13354',
         marginStart: 12,
         fontWeight: 'bold'
     },

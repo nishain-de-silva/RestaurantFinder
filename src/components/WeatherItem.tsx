@@ -1,45 +1,50 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, useColorScheme } from "react-native";
 import { ForcastParameters } from "../screens/WeatherDetails";
 import morning from "../assets/morning.png"
 import sun from "../assets/sun.png"
 import night from "../assets/night.png"
 import wind from "../assets/wind.png"
 import compass from "../assets/compass.png"
+import { TextStyle } from "../common/utils";
 
 type WeatherItemParams = {
     item: ForcastParameters
 }
 
 export default ({ item }: WeatherItemParams) => {
-    return <View style={styles.container}>
+    const isDarkMode = useColorScheme() === 'dark'
+    const temperatureTextStyle = TextStyle(isDarkMode, styles.temperature)
+    const smallIconStyle = [styles.smallIcon, { tintColor: isDarkMode ? 'white' : 'black' }]
+
+    return <View style={[styles.container, { backgroundColor: isDarkMode ? 'black' : 'white' }]}>
         <View style={styles.temperatureRow}>
             <View style={styles.temperatureCell}>
                 <Image source={morning} style={styles.temperatureIcon} />
-                <Text style={styles.temperature}>{`Morning temp ${item.morningTemp} K`}</Text>
+                <Text style={temperatureTextStyle}>{`Morning temp\n${item.morningTemp} K`}</Text>
             </View>
             <View style={styles.temperatureCell}>
                 <Image source={sun} style={styles.temperatureIcon} />
-                <Text style={styles.temperature}>{`Day temp ${item.dayTemp} K`}</Text>
+                <Text style={temperatureTextStyle}>{`Day temp\n${item.dayTemp} K`}</Text>
             </View>
             <View style={styles.temperatureCell}>
                 <Image source={night} style={styles.temperatureIcon} />
-                <Text style={styles.temperature}>{`Night temp ${item.nightTemp} K`}</Text>
+                <Text style={temperatureTextStyle}>{`Night temp\n${item.nightTemp} K`}</Text>
             </View>
         </View>
-        <View style={styles.windRow}>
+        <View style={[styles.windRow, { borderColor: isDarkMode ? 'white' : 'black' }]}>
             <View style={styles.windCell}>
-                <Image source={wind} style={styles.smallIcon} />
-                <Text>{`Wind speed ${item.windSpeed} m/s ${item.windDirection} deg`}</Text>
+                <Image source={wind} style={smallIconStyle} />
+                <Text style={TextStyle(isDarkMode)}>{`Wind speed ${item.windSpeed} m/s ${item.windDirection} deg`}</Text>
             </View>
             <View style={styles.windCell}>
-                <Image source={compass} style={styles.smallIcon} />
-                <Text>{`${item.windDirection} deg`}</Text>
+                <Image source={compass} style={smallIconStyle} />
+                <Text style={TextStyle(isDarkMode)}>{`${item.windDirection} deg`}</Text>
             </View>
 
         </View>
-        <Text style={styles.summaryHeadline}>Summary</Text>
-        <Text>{item.description}</Text>
+        <Text style={TextStyle(isDarkMode, styles.summaryHeadline)}>Summary</Text>
+        <Text style={TextStyle(isDarkMode)}>{item.description}</Text>
     </View>
 }
 
@@ -73,13 +78,14 @@ const styles = StyleSheet.create({
         width: 50
     },
     temperature: {
-        flex: 1
+        flex: 1,
+        textAlign: 'center'
     },
     temperatureRow: {
         textAlign: 'center',
         flexDirection: 'row',
         padding: 10,
-        justifyContent: 'space-around'
+        flex: 1
     },
     windRow: {
         borderColor: 'black',

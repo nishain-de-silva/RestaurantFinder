@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react"
-import { StyleSheet, Text, TextInput, TextInputIOSProps, TextInputProps, View } from "react-native"
+import { StyleSheet, Text, TextInput, TextInputIOSProps, TextInputProps, View, useColorScheme } from "react-native"
+import { TextStyle } from "./utils"
 type TextFieldProps = {
     label: string,
     value: string | undefined
@@ -18,17 +19,15 @@ export default forwardRef<TextInput, TextFieldProps>(({ value,
     error = false,
     errorMessage
 }, ref) => {
-    const getInputType = (): TextInputProps['textContentType'] => {
-        if (password) return 'password'
-        else if (email) return 'emailAddress'
-        return undefined
-    }
-
+    
+    const isDarkMode = useColorScheme() === 'dark'
     return <View style={styles.inputRow}>
-        <Text>{label}</Text>
-            
+        <Text style={TextStyle(isDarkMode)}>{label}</Text>
         <View style={styles.textInputWrapper}>
-            <TextInput ref={ref} style={styles.inputField}
+            <TextInput ref={ref} style={[styles.inputField, { 
+                backgroundColor: isDarkMode ? '#2a2a2a' : 'white',
+                color: isDarkMode ? 'white' : 'black'
+            }]}
                 secureTextEntry={password}
                 autoCapitalize="none"
                 value={value}
@@ -36,7 +35,7 @@ export default forwardRef<TextInput, TextFieldProps>(({ value,
                 placeholder={label}
             />
         </View>
-        {error && <Text style={styles.errorMessage}>{errorMessage}</Text>}
+        {error && <Text style={[styles.errorMessage, { color: isDarkMode ? '#09f7dc' : 'red' }]}>{errorMessage}</Text>}
     </View>
 })
 
@@ -56,9 +55,7 @@ const styles = StyleSheet.create({
     },
     inputField: {
         flex: 1,
-        backgroundColor: 'white',
         padding: 12,
-        color: 'black',
         borderColor: 'black',
         borderWidth: 1,
         borderRadius: 10

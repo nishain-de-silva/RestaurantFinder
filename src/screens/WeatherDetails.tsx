@@ -1,6 +1,6 @@
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import React, { useEffect, useState } from "react"
-import { FlatList, Image, ListRenderItem, StyleSheet, Text, View } from "react-native"
+import { FlatList, Image, ListRenderItem, StyleSheet, Text, View, useColorScheme } from "react-native"
 import { DashboardNavigatorScreenProps } from "./Dashboard"
 import axios from "axios"
 import GetLocation from "react-native-get-location"
@@ -61,12 +61,12 @@ export default ({ route }: WeatherDetailScreenProps) => {
     }
 
     const renderEmptyList = (): JSX.Element => {
-        return <View style={{ height: '100%', backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
-            <Image style={{ height: 100, width: 100 }} source={emptyIcon} />
+        return <View style={{ height: '100%', backgroundColor: isDarkMode ? 'black' : 'white', alignItems: 'center', justifyContent: 'center' }}>
+            <Image style={{ height: 100, width: 100, tintColor: isDarkMode ? 'white' : 'black' }} source={emptyIcon} />
         </View>
     }
-
-   return <View >
+    const isDarkMode = useColorScheme() === 'dark'
+   return <View>
         <FlatList 
         ListEmptyComponent={renderEmptyList}
         data={weatherData} renderItem={renderWeather}/>

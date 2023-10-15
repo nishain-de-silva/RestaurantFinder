@@ -3,7 +3,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootParamStack } from "../../Main"
 import React from "react"
 import auth from '@react-native-firebase/auth'
-import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Button, Image, StyleSheet, Text, TouchableOpacity, View, useColorScheme } from "react-native"
 import WeatherDetails from "./WeatherDetails"
 import RestuarantDetails from "./RestuarantDetails"
 import weatherIcon from '../assets/weather.png'
@@ -20,10 +20,13 @@ export type DashboardNavigatorScreenProps = {
 const Tab = createBottomTabNavigator<DashboardNavigatorScreenProps>()
 
 export default ({ route, navigation }: DashboardPageProps) => {
+    const isDarkMode = useColorScheme() === 'dark'
     const renderTabIcon = (routeName: string): BottomTabNavigationOptions['tabBarIcon'] => {
-        return ({ size }) => <Image
+        const unselectedColor = isDarkMode ? 'white': 'gray'
+        const selectedColor = isDarkMode ? "#f4aac2" : "#f44560"
+        return ({ size, focused }) => <Image
             source={routeName == 'weather' ? weatherIcon : resturantIcon}
-            style={{ height: size, width: size }}
+            style={{ height: size, width: size, tintColor: focused ? selectedColor : unselectedColor }}
         />
     }
 
@@ -34,22 +37,26 @@ export default ({ route, navigation }: DashboardPageProps) => {
 
         navigation.navigate('auth')
     }
-
+    
+    const backgroundStyle = isDarkMode ? { backgroundColor: '#2a2a2a' }: undefined
     return <Tab.Navigator
+        sceneContainerStyle={backgroundStyle}
         screenOptions={({ route: tabRoute }) => ({
+            headerTintColor: isDarkMode ? 'white' : 'black',
+            headerStyle: backgroundStyle,
+            tabBarStyle: backgroundStyle,
             tabBarIcon: renderTabIcon(tabRoute.name),
-            tabBarActiveTintColor: "blue",
-            tabBarInactiveTintColor: "gray",
+            tabBarActiveTintColor: isDarkMode ? "#f4aac2" : "#f44560",
+            tabBarInactiveTintColor: isDarkMode ? "white" : "gray",
             headerTitle: `Welcome ${route.params.username}`,
             headerRight: () => <TouchableOpacity
                 onPress={signOut}>
                 <Text
-                    style={styles.signOutButton}>
+                    style={[styles.signOutButton, { color: isDarkMode ? '#f4aac2' : '#b13354' }]}>
                     Sign out
                 </Text>
             </TouchableOpacity>
         })}
-        initialRouteName="resturants"
     >
         <Tab.Screen name="weather" component={WeatherDetails} />
         <Tab.Screen name="resturants" component={RestuarantDetails} />
@@ -58,7 +65,6 @@ export default ({ route, navigation }: DashboardPageProps) => {
 
 const styles = StyleSheet.create({
     signOutButton: {
-        color: '#b13354',
         fontWeight: 'bold',
         padding: 10
     }
