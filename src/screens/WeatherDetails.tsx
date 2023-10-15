@@ -1,39 +1,83 @@
-import { BottomTabNavigationProp, BottomTabScreenProps } from "@react-navigation/bottom-tabs"
+import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import React, { useEffect, useState } from "react"
-import { FlatList, FlatListProps, ListRenderItem, Text, View } from "react-native"
+import { FlatList, Image, ListRenderItem, StyleSheet, Text, View } from "react-native"
 import { DashboardNavigatorScreenProps } from "./Dashboard"
 import axios from "axios"
 import GetLocation from "react-native-get-location"
+import emptyIcon from "../assets/emptyWeather.png"
+import MessageSnack from "../common/MessageSnack"
+import Config from "../Config"
+import mockData from '../assets/sampleData.json'
+import WeatherItem from "../components/WeatherItem"
 
 type WeatherDetailScreenProps = BottomTabScreenProps<DashboardNavigatorScreenProps, 'weather'>
-
-const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY
-console.log({ WEATHER_API_KEY })
+export type ForcastParameters = {
+    morningTemp: number,
+    dayTemp: number,
+    nightTemp: number
+    windSpeed: number,
+    description: string,
+    windDirection: number
+}
 export default ({ route }: WeatherDetailScreenProps) => {
-    const [weatherData, setWeatherData] = useState([])
+    const [weatherData, setWeatherData] = useState<ForcastParameters[]>([])
+    const [snackBarMessage, setSnackBarMessage] = useState<string | null>(null)
+
     const loadBasedOnLocation = async () => {
-        const result = await GetLocation.getCurrentPosition({
+        GetLocation.getCurrentPosition({
             enableHighAccuracy: true,
             timeout: 60000
-        })
-        const { data } = await axios.get('api.openweathermap.org/data/2.5/forecast/daily', {
-            params: {
-                lat: result.latitude,
-                lon: result.longitude,
-                appid: WEATHER_API_KEY
+        }).then(async (result) => {
+            console.log('network call made')
+            // const { data } = await axios.get('https://api.openweathermap.org/data/3.0/onecall', {
+            //     params: {
+            //         lat: result.latitude,
+            //         lon: result.longitude,
+            //         appid: Config.WEATHER_API_KEY,
+            //         exclude: 'current,minutely,hourly,alerts'
+            //     }
+            // })
+            const parsedData = mockData.daily.map((forcast) => ({
+                morningTemp: forcast.temp.morn,
+                dayTemp: forcast.temp.day,
+                nightTemp: forcast.temp.night,
+                windSpeed: forcast.wind_speed,
+                description: forcast.summary,
+                windDirection: forcast.wind_deg
+            } as ForcastParameters))
+            setWeatherData(parsedData)
+        }).catch(({ code }) => {
+            if(code == 'UNAUTHORIZED') {
+                setSnackBarMessage('Please provide location permission to continue')
             }
         })
-        setWeatherData(data.list.map((forcast: any) => forcast.temp.day))
     }
     useEffect(() => {
         loadBasedOnLocation()
     }, [])
 
-    const renderWeather: ListRenderItem<any> = ({ item }) => {
-        return <Text>{item.dayTemp}</Text>
+    const renderWeather: ListRenderItem<ForcastParameters> = ({ item }) => {
+        return <WeatherItem item={item} />
     }
 
-   return <View>
-        <FlatList data={weatherData} renderItem={renderWeather}/>
+    const renderEmptyList = (): JSX.Element => {
+        return <View style={{ height: '100%', backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+            <Image style={{ height: 100, width: 100 }} source={emptyIcon} />
+        </View>
+    }
+
+   return <View >
+        <FlatList 
+        ListEmptyComponent={renderEmptyList}
+        data={weatherData} renderItem={renderWeather}/>
+        <MessageSnack 
+            message={snackBarMessage} 
+            setMessage={setSnackBarMessage} />
     </View>
 }
+
+const styles = StyleSheet.create({
+    root: {
+        height: '100%'
+    }
+})

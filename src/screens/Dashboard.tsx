@@ -2,7 +2,8 @@ import { BottomTabNavigationOptions, createBottomTabNavigator } from "@react-nav
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootParamStack } from "../../Main"
 import React from "react"
-import { Image, Text, View } from "react-native"
+import auth from '@react-native-firebase/auth'
+import { Button, Image, Text, View } from "react-native"
 import WeatherDetails from "./WeatherDetails"
 import RestuarantDetails from "./RestuarantDetails"
 import weatherIcon from '../assets/weather.png'
@@ -17,26 +18,33 @@ export type DashboardNavigatorScreenProps = {
 
 const Tab = createBottomTabNavigator<DashboardNavigatorScreenProps>()
 
-export default ({ route }: DashboardPageProps) => {
+export default ({ route, navigation }: DashboardPageProps) => {
     const renderTabIcon = (routeName: string): BottomTabNavigationOptions['tabBarIcon'] => {
         return ({ size }) => <Image
             source={routeName == 'weather' ? weatherIcon : resturantIcon}
-            height={size}
-            width={size}
+            style={{ height: size, width: size }}
         />
     }
 
-    return <View>
-        <Text>{`Welcome ${route.params.username}`}</Text>
-        <Tab.Navigator
-            screenOptions={({ route }) => ({
-                tabBarIcon: renderTabIcon(route.name),
-                tabBarActiveTintColor:"blue",
-                tabBarInactiveTintColor:"gray"
-            })}
-        >
-            <Tab.Screen name="weather" component={WeatherDetails} />
-            <Tab.Screen name="resturants" component={RestuarantDetails} />
-        </Tab.Navigator>
-        </View>
+    const signOut = async () => {
+        await auth().signOut()
+        navigation.navigate('auth')
+    }
+    
+    return <Tab.Navigator
+        screenOptions={({ route: tabRoute }) => ({
+            tabBarIcon: renderTabIcon(tabRoute.name),
+            tabBarActiveTintColor: "blue",
+            tabBarInactiveTintColor: "gray",
+            headerTitle: `Welcome ${route.params.username}`,
+            headerRight: () => (<Button 
+                onPress={signOut}
+                title="Sign out"
+                color="black"
+            />)
+        })}
+    >
+        <Tab.Screen name="weather" component={WeatherDetails} />
+        <Tab.Screen name="resturants" component={RestuarantDetails} />
+    </Tab.Navigator>
 }

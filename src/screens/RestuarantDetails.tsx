@@ -5,15 +5,13 @@ import { DashboardNavigatorScreenProps } from "./Dashboard"
 import GetLocation from 'react-native-get-location'
 import MapView, { LatLng, Marker } from "react-native-maps"
 import axios, { Axios } from "axios"
-
+import Config from '../Config'
 type ResturantDetailScreenProps = BottomTabScreenProps<DashboardNavigatorScreenProps, 'resturants'>
 type CurrentLocationType = {
     latitude: number,
     longitude: number
 }
 
-const GOOGLE_PLACES_API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
-console.log({ GOOGLE_PLACES_API_KEY })
 
 export default () => {
     const [currentLocation, setCurrentLocation] = useState<CurrentLocationType | null>(null)
@@ -32,7 +30,7 @@ export default () => {
             params: {
                 location: `${locationInfo.latitude}%${locationInfo.longitude}`,
                 radius: 1500,
-                key: GOOGLE_PLACES_API_KEY
+                key: Config.GOOGLE_PLACES_API_KEY
             }
         })
         const markers = data.results.map((place: any) => {

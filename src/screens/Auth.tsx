@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import auth from '@react-native-firebase/auth'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootParamStack } from '../../Main';
 import Textfield from '../common/Textfield';
@@ -120,7 +120,11 @@ export default ({ navigation }: AuthPageProps) => {
         </View>
         <View>
         </View>
-        <MessageSnack message={errorMessage} duration={5000} />
+        <MessageSnack 
+            message={errorMessage}
+            setMessage={setErrorMessage}
+            duration={5000}
+        />
     </View>
 }
 
