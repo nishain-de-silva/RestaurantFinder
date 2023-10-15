@@ -1,0 +1,928 @@
+{
+    "html_attributions": [],
+    "next_page_token": "AcJnMuEGDQ4jWe4BmmlR2AV4YG4Is88s67f0fwvEpprmWPEmmG9u0lF6K4o2IN6VnpJw8b0I5RGjd-UzLdYfvqoVnRlsC0_PNcBl4g5iQizirDorLCJ_c-wdmz9gdwgG2oMPmcuDpk6mbmMcZPQHPEeQc_P2_txT7zGsEpwhcD4-JBWTlXlLP3dnzekt-MPrz94oPxb4ikjD9hMnN86Umd6sV-2TWltAUfHpEwqGO_QGOjlK1PL5LBqCSqO9tRkK9i-rLv6F4fRAdvC-wXsboyKiQ6uC7QLnrXyZKbAQnLYxGUq69grQRfLM5S_nZZ0L7RCkDu6uDQ89tcRZYHEYlFVcmBV2unKDTqgdk-M1Ibb2iQ-AYPyxkJs9iUjr6FL8F4IUsmaSf_hdHxQhp1pdBUEvSW2ndNQRQgrCvEDEOt1zDuaG0JPZSWekoMNJ6lpD",
+    "results": [
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.050171999999999,
+                    "lng": 80.22019
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.051520580291501,
+                        "lng": 80.2215277302915
+                    },
+                    "southwest": {
+                        "lat": 6.048822619708496,
+                        "lng": 80.21882976970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Malee's Restaurant",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 2307,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/116808866975608351264\">Harsha Weerasinghe</a>"
+                    ],
+                    "photo_reference": "AcJnMuHamDNszXmy9B_Pjgdnd_SR4D4NcM6A3OA09X8Mrl08-r0uNb-yXi9IEtWyIazE2UoLGjPXuMzvVj7_bsvhhkX5P_MQiq4amMiW0524a1mN0ZMmvbJXM7PiZYbcEBazLuDGg2qdgZXJ_fhR8k1Oy99JVoIrO0BxvBgJuxtVjLwzolg6",
+                    "width": 2445
+                }
+            ],
+            "place_id": "ChIJ60drkMVz4ToRjZorVar28A8",
+            "plus_code": {
+                "compound_code": "362C+33 Galle, Sri Lanka",
+                "global_code": "6MR2362C+33"
+            },
+            "rating": 4.3,
+            "reference": "ChIJ60drkMVz4ToRjZorVar28A8",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 10,
+            "vicinity": "No: 93 1/1 Steel Road Dangedara, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0456509,
+                    "lng": 80.2377049
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.046908930291503,
+                        "lng": 80.2390254802915
+                    },
+                    "southwest": {
+                        "lat": 6.044210969708498,
+                        "lng": 80.2363275197085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+            "icon_background_color": "#909CE1",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+            "name": "Friendship Villa",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 2400,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/106782282035875221773\">Friendship Villa</a>"
+                    ],
+                    "photo_reference": "AcJnMuHSkAcsCq0Jru8W9nzpGIuvy5PBsyjVwgk77iVl17rCRgoYvn2m2aChm1SJwC9ARDQQhfb8WybGJ1mq5BQ4DlCcu_xtKXfH3St8X4Wr3k8Vsl0Zg3Cp9s2SB7EVQBGwdOeLRs6XwxavRDwlSRIJ1Ma5UBdhHynbcBkbdNV4wXOtwrE",
+                    "width": 3600
+                }
+            ],
+            "place_id": "ChIJsQwO1jVy4ToRSX1O-4Zh2Bs",
+            "plus_code": {
+                "compound_code": "26WQ+73 Galle, Sri Lanka",
+                "global_code": "6MR226WQ+73"
+            },
+            "rating": 4.6,
+            "reference": "ChIJsQwO1jVy4ToRSX1O-4Zh2Bs",
+            "scope": "GOOGLE",
+            "types": [
+                "park",
+                "lodging",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 20,
+            "vicinity": "88/5 B2, Sri Subadrarama Road,Thenkallagoda, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.051189900000001,
+                    "lng": 80.22779509999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.052555880291503,
+                        "lng": 80.2291736302915
+                    },
+                    "southwest": {
+                        "lat": 6.049857919708498,
+                        "lng": 80.22647566970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "The PAPRIKA RESTAURANT AND CAFE",
+            "place_id": "ChIJMVL_ys1z4ToRPcpznzNq7Dk",
+            "plus_code": {
+                "compound_code": "362H+F4 Galle, Sri Lanka",
+                "global_code": "6MR2362H+F4"
+            },
+            "reference": "ChIJMVL_ys1z4ToRPcpznzNq7Dk",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "vicinity": "Sri Lanka"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0533077,
+                    "lng": 80.2280215
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.054666930291502,
+                        "lng": 80.22932618029151
+                    },
+                    "southwest": {
+                        "lat": 6.051968969708497,
+                        "lng": 80.2266282197085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "York Wok Restaurant",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 720,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/111308421192664336881\">York Wok Restaurant</a>"
+                    ],
+                    "photo_reference": "AcJnMuHyZSQUOYXZ7V1PHo8QU2ZE4fvDnjVTiL64XPL6d0A45xrKCzFa-CIgRejbeDoZXkVJpNWDTAUigrvO3Ai6fqBnVFrVioknQmY0w6oiYR06EaFDuPGlX9nHngeFhNE-SCrQNbHwSevLZHePrJHciypQC-m3AhouaOKIeqXNFpF3lsko",
+                    "width": 1640
+                }
+            ],
+            "place_id": "ChIJH4zdCaBz4ToRCsZNd-Z1nDQ",
+            "plus_code": {
+                "compound_code": "363H+86 Galle, Sri Lanka",
+                "global_code": "6MR2363H+86"
+            },
+            "reference": "ChIJH4zdCaBz4ToRCsZNd-Z1nDQ",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "vicinity": "124/D Morris Road, Junction"
+        },
+        {
+            "business_status": "CLOSED_TEMPORARILY",
+            "geometry": {
+                "location": {
+                    "lat": 6.0491647,
+                    "lng": 80.2276736
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.050495880291503,
+                        "lng": 80.2290500302915
+                    },
+                    "southwest": {
+                        "lat": 6.047797919708498,
+                        "lng": 80.2263520697085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Sanjeewa Hotel",
+            "permanently_closed": true,
+            "photos": [
+                {
+                    "height": 3120,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/108256794293287055773\">SUDESH BENZ</a>"
+                    ],
+                    "photo_reference": "AcJnMuHnIcRX2PjOVbuO-9jrOE3HLK8M6Yv19NZrZRTXqiXXyrxZSkz4aCQWzLk7sYvqnPWmGTCw-m7Dr1AvD0T_GIfuQvH8aPSQNgQgZoHVWyDPBeuifpov8itILDfjNiyafd88vjO01pAAIGB_sRRFy3GuMXEutCX0geN_WIf3uwXXinr1",
+                    "width": 4160
+                }
+            ],
+            "place_id": "ChIJ6TPXqitz4ToRj_AEaHEPeGw",
+            "plus_code": {
+                "compound_code": "26XH+M3 Galle, Sri Lanka",
+                "global_code": "6MR226XH+M3"
+            },
+            "rating": 3,
+            "reference": "ChIJ6TPXqitz4ToRj_AEaHEPeGw",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 2,
+            "vicinity": "200 B Morris Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.049087699999999,
+                    "lng": 80.22781069999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.050461530291502,
+                        "lng": 80.22912133029151
+                    },
+                    "southwest": {
+                        "lat": 6.047763569708497,
+                        "lng": 80.22642336970848
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Herali Restaurant",
+            "photos": [
+                {
+                    "height": 3468,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/114791285782473034638\">Mac Lk</a>"
+                    ],
+                    "photo_reference": "AcJnMuFPu2z4K9jjYH4vKTcrTyoyKv9UkqzIZ0qfAYuJ5YObyKxe5XxIT7grvJvUVjWO11vz4yB1_4na0kGXE-VYczYlaTs4dZdZJNewei4bkt7a9Bw2xAEGk1du98wUIKL8tEaLBYPp6Ea2DvzH5kmmya1PlJGrBNDzqWcCJhBhD6sK2LpV",
+                    "width": 4624
+                }
+            ],
+            "place_id": "ChIJ9wAfgJ9z4ToRy_zqbFjZBbQ",
+            "rating": 4.6,
+            "reference": "ChIJ9wAfgJ9z4ToRy_zqbFjZBbQ",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 5,
+            "vicinity": "26XH+J4M, Morris Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.048267500000001,
+                    "lng": 80.22766849999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.049733680291503,
+                        "lng": 80.22884743029149
+                    },
+                    "southwest": {
+                        "lat": 6.047035719708498,
+                        "lng": 80.22614946970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Noon cafe",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 12000,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/101749456794327235121\">Shahul Hameedh</a>"
+                    ],
+                    "photo_reference": "AcJnMuHBTstmAthah6jupVhhWXT0AkjFNSfXmJjE5_Wgiw34Vekrutc0SZSED5lZ6dL1xhTSIxXwlM3qe5xdxl2XiTW7AfeO0csVCoZNi1BUK-fao6yK6RvcxzGkS-p6isbvhC8RKwjTfBN9GAfccxjVnYWGZiwtWuQ3KNFxNGhv0K0ZwxFD",
+                    "width": 9000
+                }
+            ],
+            "place_id": "ChIJTzC1Wtpz4ToRIQx5q63T4R8",
+            "plus_code": {
+                "compound_code": "26XH+83 Galle, Sri Lanka",
+                "global_code": "6MR226XH+83"
+            },
+            "rating": 4.1,
+            "reference": "ChIJTzC1Wtpz4ToRIQx5q63T4R8",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 41,
+            "vicinity": "176 Morris Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0481818,
+                    "lng": 80.2270142
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.049543880291502,
+                        "lng": 80.22835603029151
+                    },
+                    "southwest": {
+                        "lat": 6.046845919708497,
+                        "lng": 80.2256580697085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "La Bistro",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 756,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/108961603347829416252\">La Bistro</a>"
+                    ],
+                    "photo_reference": "AcJnMuG0ECTS8YBtbl4ZixKZY2UIfp4lFZpux7ZasTEoOOGAQISEuSzVK4VdGQKfqHaeKN0mfZsFP-1inwVxo-Condp0YT4xn9vEQz9oXqCllyKtz5ZYG_AG8vb-FHR6DQ1ePW5sGFcvaCbEokk76d6Km_R_np1hPEsa0owMce5Dnq5YL02X",
+                    "width": 1008
+                }
+            ],
+            "place_id": "ChIJi1v0jdFz4ToRkDxdsTyk-9I",
+            "plus_code": {
+                "compound_code": "26XG+7R Galle, Sri Lanka",
+                "global_code": "6MR226XG+7R"
+            },
+            "rating": 5,
+            "reference": "ChIJi1v0jdFz4ToRkDxdsTyk-9I",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 10,
+            "vicinity": "57/c Morris road, Near 139-149 Edmand Mawatha, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.050425300000001,
+                    "lng": 80.2306033
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.051826280291502,
+                        "lng": 80.23201958029151
+                    },
+                    "southwest": {
+                        "lat": 6.049128319708498,
+                        "lng": 80.2293216197085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Hotel Danuddara ( New Management )",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 768,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/100399025794079531872\">Hotel Danuddara ( New Management )</a>"
+                    ],
+                    "photo_reference": "AcJnMuElS6lXnqCygUPHx4yzsl3xN0B3LTzyqIo3LlOxcjF0G_9x3sIvGsJKP60U1bNYKow1I3rAfLW8G3D0ebXnXIQXwaO6g0vB5mEJG_W1ZImkpLRqGnOO-c-gNUewriK6pQWD-m-XnsYCimEssKvy4KHXH0WWIDpfEe4ZtOpe9vORCazU",
+                    "width": 1152
+                }
+            ],
+            "place_id": "ChIJvQwQ6Mxz4ToRxjUm3JCSFog",
+            "plus_code": {
+                "compound_code": "362J+56 Galle, Sri Lanka",
+                "global_code": "6MR2362J+56"
+            },
+            "rating": 3.8,
+            "reference": "ChIJvQwQ6Mxz4ToRxjUm3JCSFog",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 77,
+            "vicinity": "77/1 Sadhujana Mawatha, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.046853200000001,
+                    "lng": 80.2253164
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.048202230291501,
+                        "lng": 80.22666538029151
+                    },
+                    "southwest": {
+                        "lat": 6.045504269708497,
+                        "lng": 80.2239674197085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Fish Corner",
+            "opening_hours": {
+                "open_now": true
+            },
+            "place_id": "ChIJ78QIa8lz4ToR5LdHAK5h-Dg",
+            "plus_code": {
+                "compound_code": "26WG+P4 Galle, Sri Lanka",
+                "global_code": "6MR226WG+P4"
+            },
+            "rating": 4,
+            "reference": "ChIJ78QIa8lz4ToR5LdHAK5h-Dg",
+            "scope": "GOOGLE",
+            "types": [
+                "meal_takeaway",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 2,
+            "vicinity": "G, 97/5 Morris Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0506508,
+                    "lng": 80.22203890000002
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.051994630291502,
+                        "lng": 80.22335673029151
+                    },
+                    "southwest": {
+                        "lat": 6.049296669708498,
+                        "lng": 80.22065876970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Elaina Restaurant & Catering Service",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 4032,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/103059788247906762624\">Kasun Dishantha</a>"
+                    ],
+                    "photo_reference": "AcJnMuHjbF3qwcQOzoQGF1sUeouhE6zwv61kDhjZ8V1pjpxJVOwKSYyaRmFPLTVF-ElPo7wHDJEtdJB7CbROng6ZIP47sz9cvCj2xhjssEKEnzVlJqaGs2cTk9nIG7nDWy728zZenPKp_D_dTf4RpZgQnI62rJ8x2PlcgwMoVeecFdWQjGm4",
+                    "width": 3024
+                }
+            ],
+            "place_id": "ChIJu-Wk0-1z4ToRxCExTC2I33I",
+            "rating": 4.5,
+            "reference": "ChIJu-Wk0-1z4ToRxCExTC2I33I",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 55,
+            "vicinity": "362C+7R7, A.H.E Fernando Mawatha, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.056432699999999,
+                    "lng": 80.2249585
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.057749430291501,
+                        "lng": 80.22615953029151
+                    },
+                    "southwest": {
+                        "lat": 6.055051469708497,
+                        "lng": 80.2234615697085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Cup cake lab",
+            "photos": [
+                {
+                    "height": 1080,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/112693298520408697331\">Sumal Chathuranga</a>"
+                    ],
+                    "photo_reference": "AcJnMuHnJNND97oJ5tFMJgbf5bQ6qDyi1zlkACO45vynaKkl_tQgpENRnkn4HKIimtemPavWH-QzzEuYXo0QpklsWbLPiaMTrqrafmdHB2jWpjX_p7jRPxjenHqctBdWyCpvMADmkpM9f09rw3V4FYVFEgiXk_5XyT_PRrBk8jO_3OcQHH34",
+                    "width": 1920
+                }
+            ],
+            "place_id": "ChIJ9Q8TDE9z4ToR91pPbpW15Sk",
+            "plus_code": {
+                "compound_code": "364F+HX Galle, Sri Lanka",
+                "global_code": "6MR2364F+HX"
+            },
+            "reference": "ChIJ9Q8TDE9z4ToR91pPbpW15Sk",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "vicinity": "Thalgahawaththa, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0457983,
+                    "lng": 80.2267361
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.047134230291502,
+                        "lng": 80.2280842802915
+                    },
+                    "southwest": {
+                        "lat": 6.044436269708497,
+                        "lng": 80.22538631970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Chanaka Hotel",
+            "photos": [
+                {
+                    "height": 3264,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/109324037864718702632\">Ananda S.</a>"
+                    ],
+                    "photo_reference": "AcJnMuGZTw1CKeBDrqPAjbERjnQL_3-yefk06DOTNGESLPRhNvw6z9iwt1ZFDfC4hPjwQQzXP6PgLodxlgaIByNAsOSKkfDP4tfuCRCtPq55wzut2fZNYddnUGoL9oGte1Y82JSAhhjVQOgjU-gZT7K5MQCdMwk19-5E9MuHNtO8xvYsUzVZ",
+                    "width": 1836
+                }
+            ],
+            "place_id": "ChIJw8kucXVz4ToRlmRjKLhkLUA",
+            "rating": 3,
+            "reference": "ChIJw8kucXVz4ToRlmRjKLhkLUA",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1,
+            "vicinity": "26WG+8M9, Kanampitiya Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0457177,
+                    "lng": 80.22647239999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.047087530291502,
+                        "lng": 80.2278226802915
+                    },
+                    "southwest": {
+                        "lat": 6.044389569708497,
+                        "lng": 80.22512471970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Yummy Food",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 405,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/108047770960322472573\">Galle Cool</a>"
+                    ],
+                    "photo_reference": "AcJnMuExV3JYBmYBi2bp_Zmw3Ey5OujvbSHH10ZoIKgV2YeTbRks7Uv9L9vX7rMxTG4p_jnvrUFBU1peBOHqWLAhsLG5tV8P1otLOhxAl3KUqgtmb6SccDcsCliHTqgTrsfO1yGdcZNfwJGjN6fgXT7tqvgsOZRfjhgv3MyVQA0bWP6hA9Ej",
+                    "width": 720
+                }
+            ],
+            "place_id": "ChIJy2LGamBz4ToR5EfU0qh1C54",
+            "plus_code": {
+                "compound_code": "26WG+7H Galle, Sri Lanka",
+                "global_code": "6MR226WG+7H"
+            },
+            "rating": 5,
+            "reference": "ChIJy2LGamBz4ToR5EfU0qh1C54",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1,
+            "vicinity": "47 Kanampitiya Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0456753,
+                    "lng": 80.22509959999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.047047780291502,
+                        "lng": 80.2264368302915
+                    },
+                    "southwest": {
+                        "lat": 6.044349819708497,
+                        "lng": 80.2237388697085
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "KING OF BBQ",
+            "place_id": "ChIJC0i1M0Zz4ToRqNu8zktoY1c",
+            "rating": 5,
+            "reference": "ChIJC0i1M0Zz4ToRqNu8zktoY1c",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 4,
+            "vicinity": "26WG+72H, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.0456583,
+                    "lng": 80.22463019999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.046974180291503,
+                        "lng": 80.22598478029151
+                    },
+                    "southwest": {
+                        "lat": 6.044276219708498,
+                        "lng": 80.22328681970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Thalal Chinese Foods & Catering",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 1080,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/107319670300286666052\">Ghazzali Saduk</a>"
+                    ],
+                    "photo_reference": "AcJnMuEfuw74RXho3nO9nDFVcDpTQIJ0nhAgVYrxHzf_0ozdM78wu9F6Qo8clMbo4Y3xGlKNvPGbWk3XMTr1p-_B5xn0xFbJuLGDYQ_yNUwaS1LN4AGvin16stwkIzXCg3iiiCXvAWwHJBDhw_yJ6F7vqjNFgAQEOpEjqMayynMr3f5lGZu_",
+                    "width": 1920
+                }
+            ],
+            "place_id": "ChIJ4Uagp8lz4ToRQzmGQN_OsNs",
+            "rating": 3.6,
+            "reference": "ChIJ4Uagp8lz4ToRQzmGQN_OsNs",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 104,
+            "vicinity": "26WF+7V6, Morris Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.053501899999999,
+                    "lng": 80.2209737
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.054927780291501,
+                        "lng": 80.2224289302915
+                    },
+                    "southwest": {
+                        "lat": 6.052229819708496,
+                        "lng": 80.21973096970849
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/shopping-71.png",
+            "icon_background_color": "#4B96F3",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/shoppingcart_pinlet",
+            "name": "KN spicy",
+            "opening_hours": {
+                "open_now": true
+            },
+            "place_id": "ChIJCUnbAEZz4ToRWgReJ_GLFxw",
+            "plus_code": {
+                "compound_code": "363C+C9 Galle, Sri Lanka",
+                "global_code": "6MR2363C+C9"
+            },
+            "reference": "ChIJCUnbAEZz4ToRWgReJ_GLFxw",
+            "scope": "GOOGLE",
+            "types": [
+                "grocery_or_supermarket",
+                "store",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "vicinity": "28A 1upper Disson Road, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.053503699999999,
+                    "lng": 80.22096549999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.054931230291501,
+                        "lng": 80.22242298029151
+                    },
+                    "southwest": {
+                        "lat": 6.052233269708498,
+                        "lng": 80.21972501970851
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "ILYAS hotel",
+            "opening_hours": {
+                "open_now": true
+            },
+            "place_id": "ChIJLbQMHZpz4ToRCW4kB3_e9Nw",
+            "rating": 5,
+            "reference": "ChIJLbQMHZpz4ToRCW4kB3_e9Nw",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1,
+            "vicinity": "363C+C94, Galle"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.053503699999999,
+                    "lng": 80.22096549999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.054931230291501,
+                        "lng": 80.22242298029151
+                    },
+                    "southwest": {
+                        "lat": 6.052233269708498,
+                        "lng": 80.21972501970851
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "Cheff lady chinese restaurant",
+            "opening_hours": {
+                "open_now": true
+            },
+            "place_id": "ChIJVVVVVcVz4ToRa2zvc8Klw-o",
+            "plus_code": {
+                "compound_code": "363C+C9 Galle, Sri Lanka",
+                "global_code": "6MR2363C+C9"
+            },
+            "rating": 5,
+            "reference": "ChIJVVVVVcVz4ToRa2zvc8Klw-o",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1,
+            "vicinity": "No:92/B,sandagiripura,punchi akurugoda,Thissamaharama"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 6.053503699999999,
+                    "lng": 80.22096549999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 6.054931230291501,
+                        "lng": 80.22242298029151
+                    },
+                    "southwest": {
+                        "lat": 6.052233269708498,
+                        "lng": 80.21972501970851
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+            "icon_background_color": "#FF9E67",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+            "name": "RIO Ice Cream",
+            "place_id": "ChIJ8anNaVRz4ToRtyIa1GPykfQ",
+            "plus_code": {
+                "compound_code": "363C+C9 Galle, Sri Lanka",
+                "global_code": "6MR2363C+C9"
+            },
+            "reference": "ChIJ8anNaVRz4ToRtyIa1GPykfQ",
+            "scope": "GOOGLE",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ],
+            "vicinity": "RIO Ice Cream II, Galle"
+        }
+    ],
+    "status": "OK"
+}

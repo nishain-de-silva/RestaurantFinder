@@ -43,6 +43,7 @@ export default ({ route, navigation }: DashboardPageProps) => {
                 color="black"
             />)
         })}
+        initialRouteName="resturants"
     >
         <Tab.Screen name="weather" component={WeatherDetails} />
         <Tab.Screen name="resturants" component={RestuarantDetails} />
