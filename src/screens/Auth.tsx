@@ -19,6 +19,7 @@ export default ({ navigation }: AuthPageProps) => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const snackBarRef = useRef<MessageSnackHandle>(null)
     const [facebookSignInLoading, setFacebookSignInLoading] = useState(false)
+    const [emailSignLoading, setEmailSignLoading] = useState(false)
 
     const navigateToDashBoard = (username: string | null) => {
         navigation.navigate('dashboard', { username: username || 'user' })
@@ -32,7 +33,7 @@ export default ({ navigation }: AuthPageProps) => {
     }, [])
 
     const performSignInOrRegistration = () => {
-        if(isEmailInvalid) return // common for both paths...
+        if (isEmailInvalid) return // common for both paths...
         if (isLoginMode) signIn()
         else registerAccount()
     }
@@ -42,6 +43,7 @@ export default ({ navigation }: AuthPageProps) => {
     }
 
     const signIn = () => {
+        setEmailSignLoading(true)
         auth().signInWithEmailAndPassword(email, password)
             .then((result) => {
                 navigateToDashBoard(result.user.displayName)
@@ -52,13 +54,14 @@ export default ({ navigation }: AuthPageProps) => {
                 if (['auth/invalid-login', 'auth/user-not-found', 'auth/wrong-password'].includes(code))
                     message = 'email or password is incorrect please try again'
                 else message = 'authentication failed'
-                console.log(code)
                 showErrorMessage(message)
+            }).finally(() => {
+                setEmailSignLoading(false)
             })
     }
 
     const registerAccount = () => {
-        if(!username.length) {
+        if (!username.length) {
             showErrorMessage('Provide a username please')
             return
         }
@@ -70,6 +73,7 @@ export default ({ navigation }: AuthPageProps) => {
             return
         }
         if (password != confirmPassword) return
+        setEmailSignLoading(true)
         auth().createUserWithEmailAndPassword(email, password)
             .then((result) => {
                 result.user.updateProfile({
@@ -82,10 +86,12 @@ export default ({ navigation }: AuthPageProps) => {
                 let message: string
                 if (code == 'auth/email-already-in-use')
                     message = 'user already exist with email'
-                else if(code == 'auth/weak-password')
+                else if (code == 'auth/weak-password')
                     message = 'password is not strong enough'
                 else message = 'resgistration failed'
                 showErrorMessage(message)
+            }).finally(() => {
+                setEmailSignLoading(false)
             })
     }
 
@@ -102,6 +108,7 @@ export default ({ navigation }: AuthPageProps) => {
 
         if (!data) {
             console.log('Something went wrong obtaining access token')
+            setFacebookSignInLoading(false)
             return
         }
         // Create a Firebase credential with the AccessToken
@@ -133,7 +140,7 @@ export default ({ navigation }: AuthPageProps) => {
             .reduce((overallScore, currentScore) => overallScore && currentScore, true)
     }
 
-    const isEmailInvalid = useMemo(():boolean  => {
+    const isEmailInvalid = useMemo((): boolean => {
         if (!email.length) return false
         const emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
         return !emailregex.test(email)
@@ -163,13 +170,18 @@ export default ({ navigation }: AuthPageProps) => {
                         errorMessage='confirm password and password must match'
                         label="Confirm Password" password />}
             </View>
-            <TouchableOpacity onPress={performSignInOrRegistration} style={styles.primaryButton}>
-                <Text style={{ color: 'white' }}>{`Sign ${isLoginMode ? 'In' : 'Up'}`}</Text>
+            <TouchableOpacity disabled={emailSignLoading} onPress={performSignInOrRegistration} style={styles.primaryButton}>
+                {emailSignLoading ? <ActivityIndicator
+                    style={styles.loadingIndicator}
+                    size={'small'}
+                    color={'white'}
+                /> : <Text style={{ color: 'white' }}>{`Sign ${isLoginMode ? 'In' : 'Up'}`}</Text>}
+
             </TouchableOpacity>
-            <TouchableOpacity style={styles.facebookButton} onPress={signInWithFacebook}>
+            <TouchableOpacity disabled={facebookSignInLoading} style={styles.facebookButton} onPress={signInWithFacebook}>
                 {facebookSignInLoading ?
-                    <ActivityIndicator 
-                        style={styles.facebookLoadingIndicator}
+                    <ActivityIndicator
+                        style={styles.loadingIndicator}
                         size={'small'}
                         color={'white'}
                     />
@@ -233,7 +245,7 @@ const styles = StyleSheet.create({
         marginEnd: 12,
         tintColor: 'white'
     },
-    facebookLoadingIndicator: {
+    loadingIndicator: {
         marginHorizontal: 20
     },
     facebookButton: {

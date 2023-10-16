@@ -31,6 +31,7 @@ export default ({ route, navigation }: DashboardPageProps) => {
     }
 
     const signOut = async () => {
+        // sign out from facebook as well...
         if (auth().currentUser?.providerData[0].providerId == 'facebook.com')
             LoginManager.logOut()
         await auth().signOut()

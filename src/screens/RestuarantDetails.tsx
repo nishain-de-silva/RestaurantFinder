@@ -38,7 +38,7 @@ export default () => {
         })
         // const { data } = await axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
         //     params: {
-        //         location: `${locationInfo.latitude}%${locationInfo.longitude}`,
+        //         location: `${locationInfo.latitude},${locationInfo.longitude}`,
         //         radius: 1500,
         //         key: Config.GOOGLE_PLACES_API_KEY
         //     }
