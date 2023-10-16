@@ -1,3 +1,19 @@
+# RestaurantFinder
+## Features
+- Support Dark mode
+- You can view the details of restuarant on marker tap
+
+### Enviorement paramters setup
+
+You need to add `env.json`, `GoogleService-Info.plist` and `google-services.json` seperately as they being **git ignored**
+
+>- copy `env.json` on root folder
+>- For IOS copy `GoogleService-Info.plist` directly on `ios` root folder. You can use `XCode` to add file reference as well.
+> - For Android copy `google-services.json` on `android/app` folder
+
+You can find these files on the link given on document submitted.
+
+### ...The rest of default document
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
