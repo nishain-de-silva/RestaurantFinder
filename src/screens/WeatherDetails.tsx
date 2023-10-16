@@ -34,6 +34,10 @@ export default () => {
                     exclude: 'current,minutely,hourly,alerts'
                 }
             })
+            if (!data.daily) {
+                snackBarRef.current?.show('Something went wrong data not available')
+                return
+            }
             const parsedData = data.daily.map((forcast: any) => ({
                 morningTemp: forcast.temp.morn,
                 dayTemp: forcast.temp.day,
