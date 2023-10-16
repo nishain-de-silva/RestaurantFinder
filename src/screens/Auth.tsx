@@ -34,6 +34,13 @@ export default ({ navigation }: AuthPageProps) => {
 
     const performSignInOrRegistration = () => {
         if (isEmailInvalid) return // common for both paths...
+        if(!email.length) {
+            showErrorMessage('please provide email')
+            return
+        } else if (!password.length) {
+            showErrorMessage('please provide password')
+            return
+        }
         if (isLoginMode) signIn()
         else registerAccount()
     }
