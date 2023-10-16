@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, useColorScheme, TouchableOpacity, Image } from 
 import { BackgroundStyle, ImageStyle, TextStyle } from "../common/utils";
 import { RestuarantParameters } from "../screens/RestuarantDetails";
 import closeIcon from '../assets/close.png'
+import starIcon from '../assets/star.png'
 
 export type ResturantDisplayOverlayHandle = {
     open: (newItem: RestuarantParameters) => void
@@ -19,7 +20,7 @@ export default forwardRef<ResturantDisplayOverlayHandle, {}>(({}, ref) => {
     
     const getRating = (): string => {
         if(item && item.rating && item.totalRating) return `${item.rating} / ${item.totalRating}`
-        return 'No rating give'
+        return 'No rating given'
     }
 
     const onClose = () => {
@@ -33,7 +34,11 @@ export default forwardRef<ResturantDisplayOverlayHandle, {}>(({}, ref) => {
             </TouchableOpacity>
         </View>
         <Text style={TextStyle(isDarkMode, styles.nameHeadline)}>{item.name}</Text>
-        <Text style={TextStyle(isDarkMode, styles.ratingsHeadline)}>Rating</Text>
+        <View style={styles.ratingRow}>
+            <Text style={TextStyle(isDarkMode, styles.ratingsHeadline)}>Rating</Text>
+            <Image source={starIcon} style={styles.starIcon} />
+        </View>
+        
         <Text style={TextStyle(isDarkMode)}>{getRating()}</Text>
     </View> : null
 }) 
@@ -76,8 +81,17 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     ratingsHeadline: {
-        marginVertical: 10,
         fontSize: 15,
         fontWeight: "bold"
+    },
+    ratingRow: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginVertical: 10,
+    },
+    starIcon: {
+        height: 20,
+        width: 20,
+        marginStart: 12
     }
 })

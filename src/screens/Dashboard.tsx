@@ -8,6 +8,7 @@ import WeatherDetails from "./WeatherDetails"
 import RestuarantDetails from "./RestuarantDetails"
 import weatherIcon from '../assets/weather.png'
 import storeIcon from '../assets/store.png'
+import logoutIcon from '../assets/logout.png'
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 type DashboardPageProps = NativeStackScreenProps<RootParamStack, 'dashboard'>
@@ -51,10 +52,10 @@ export default ({ route, navigation }: DashboardPageProps) => {
             headerTitle: `Welcome ${route.params.username}`,
             headerRight: () => <TouchableOpacity
                 onPress={signOut}>
-                <Text
-                    style={[styles.signOutButton, { color: isDarkMode ? '#f4aac2' : '#b13354' }]}>
-                    Sign out
-                </Text>
+                    <Image source={logoutIcon} style={[
+                        styles.signOutButton,
+                        { tintColor: isDarkMode ? '#f4aac2' : '#b13354' }
+                    ]} />
             </TouchableOpacity>
         })}
     >
@@ -65,7 +66,6 @@ export default ({ route, navigation }: DashboardPageProps) => {
 
 const styles = StyleSheet.create({
     signOutButton: {
-        fontWeight: 'bold',
-        padding: 10
+        height: 20, width: 20, marginHorizontal: 12
     }
 })

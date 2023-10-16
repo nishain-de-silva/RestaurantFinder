@@ -1,14 +1,10 @@
-import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import React, { useEffect, useRef, useState } from "react"
-import { FlatList, ListRenderItem, StyleSheet, Text, View } from "react-native"
-import { DashboardNavigatorScreenProps } from "./Dashboard"
+import { Platform, View } from "react-native"
 import GetLocation from 'react-native-get-location'
-import MapView, { LatLng, MapMarker, Marker } from "react-native-maps"
-import axios, { Axios } from "axios"
+import MapView, { LatLng, Marker } from "react-native-maps"
+import axios from "axios"
 import Config from '../Config'
-import sampleData from '../assets/restuarantsSampleData.json'
 import RestuarantItem, { ResturantDisplayOverlayHandle } from "../components/ResturantDisplayOverlay"
-import ResturantDisplayOverlay from "../components/ResturantDisplayOverlay"
 
 type CurrentLocationType = {
     latitude: number,
@@ -36,14 +32,14 @@ export default () => {
             latitude: locationInfo.latitude,
             longitude: locationInfo.longitude
         })
-        // const { data } = await axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
-        //     params: {
-        //         location: `${locationInfo.latitude},${locationInfo.longitude}`,
-        //         radius: 1500,
-        //         key: Config.GOOGLE_PLACES_API_KEY
-        //     }
-        // })
-        const parsedData = sampleData.results.map((restuarant) => ({
+        const { data } = await axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
+            params: {
+                location: `${locationInfo.latitude},${locationInfo.longitude}`,
+                radius: 1500,
+                key: Config.GOOGLE_PLACES_API_KEY
+            }
+        })
+        const parsedData = data.results.map((restuarant: any) => ({
             position: {
                 latitude: restuarant.geometry.location.lat,
                 longitude: restuarant.geometry.location.lng,
@@ -53,7 +49,7 @@ export default () => {
             totalRating: restuarant.user_ratings_total,
         } as RestuarantParameters))
         setRestuarants(parsedData)
-        mapRef.current?.fitToCoordinates(parsedData.map((data) => data.position))
+        mapRef.current?.fitToCoordinates(parsedData.map((data: RestuarantParameters) => data.position))
     }
 
     useEffect(() => {
@@ -64,6 +60,11 @@ export default () => {
 
     const onPressMarker = (item: RestuarantParameters) => {
         return () => {
+            if (Platform.OS == 'ios') {
+                mapRef.current?.animateCamera({
+                    center: item.position
+                })
+            }
             overlayRef.current?.open(item)
         }
     }

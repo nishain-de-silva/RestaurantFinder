@@ -85,7 +85,7 @@ export default ({ navigation }: AuthPageProps) => {
                 const { code } = error
                 let message: string
                 if (code == 'auth/email-already-in-use')
-                    message = 'user already exist with email'
+                    message = 'user already exist with given email'
                 else if (code == 'auth/weak-password')
                     message = 'password is not strong enough'
                 else message = 'resgistration failed'

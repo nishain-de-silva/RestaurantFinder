@@ -1,16 +1,13 @@
-import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import React, { useEffect, useRef, useState } from "react"
 import { FlatList, Image, ListRenderItem, StyleSheet, Text, View, useColorScheme } from "react-native"
-import { DashboardNavigatorScreenProps } from "./Dashboard"
 import axios from "axios"
 import GetLocation from "react-native-get-location"
-import emptyIcon from "../assets/emptyWeather.png"
+import emptyIcon from "../assets/searching.png"
 import MessageSnack, { MessageSnackHandle } from "../components/MessageSnack"
 import Config from "../Config"
-import mockData from '../assets/sampleData.json'
 import WeatherItem from "../components/WeatherItem"
+import { ImageStyle } from "../common/utils"
 
-type WeatherDetailScreenProps = BottomTabScreenProps<DashboardNavigatorScreenProps, 'weather'>
 export type ForcastParameters = {
     morningTemp: number,
     dayTemp: number,
@@ -28,16 +25,16 @@ export default () => {
             enableHighAccuracy: true,
             timeout: 60000
         }).then(async (result) => {
-            
-            // const { data } = await axios.get('https://api.openweathermap.org/data/3.0/onecall', {
-            //     params: {
-            //         lat: result.latitude,
-            //         lon: result.longitude,
-            //         appid: Config.WEATHER_API_KEY,
-            //         exclude: 'current,minutely,hourly,alerts'
-            //     }
-            // })
-            const parsedData = mockData.daily.map((forcast) => ({
+
+            const { data } = await axios.get('https://api.openweathermap.org/data/3.0/onecall', {
+                params: {
+                    lat: result.latitude,
+                    lon: result.longitude,
+                    appid: Config.WEATHER_API_KEY,
+                    exclude: 'current,minutely,hourly,alerts'
+                }
+            })
+            const parsedData = data.daily.map((forcast: any) => ({
                 morningTemp: forcast.temp.morn,
                 dayTemp: forcast.temp.day,
                 nightTemp: forcast.temp.night,
@@ -47,7 +44,7 @@ export default () => {
             } as ForcastParameters))
             setWeatherData(parsedData)
         }).catch(({ code }) => {
-            if(code == 'UNAUTHORIZED') {
+            if (code == 'UNAUTHORIZED') {
                 snackBarRef.current?.show('Please provide location permission to continue')
             }
         })
@@ -61,16 +58,24 @@ export default () => {
     }
 
     const renderEmptyList = (): JSX.Element => {
-        return <View style={{  backgroundColor: isDarkMode ? 'black' : 'white', alignItems: 'center', justifyContent: 'center' }}>
-            <Image style={{ height: 100, width: 100, tintColor: isDarkMode ? 'white' : 'black' }} source={emptyIcon} />
+        return <View style={{ padding: 30, height: '100%', flex: 1, backgroundColor: isDarkMode ? 'black' : 'white', alignItems: 'center', justifyContent: 'center' }}>
+            <Image style={ImageStyle(isDarkMode, styles.loadingIcon)} source={emptyIcon} />
+            <Text>Fetching weather...</Text>
         </View>
     }
     const isDarkMode = useColorScheme() === 'dark'
-   return <View>
-        <FlatList 
-        ListEmptyComponent={renderEmptyList}
-        data={weatherData} renderItem={renderWeather}/>
-        <MessageSnack 
+    return <View>
+        <FlatList
+            ListEmptyComponent={renderEmptyList}
+            data={weatherData} renderItem={renderWeather} />
+        <MessageSnack
             ref={snackBarRef} />
     </View>
 }
+
+const styles = StyleSheet.create({
+    loadingIcon: {
+        height: 100,
+        width: 100,
+    }
+})
