@@ -7,7 +7,7 @@ import { Button, Image, StyleSheet, Text, TouchableOpacity, View, useColorScheme
 import WeatherDetails from "./WeatherDetails"
 import RestuarantDetails from "./RestuarantDetails"
 import weatherIcon from '../assets/weather.png'
-import resturantIcon from '../assets/restaurant.png'
+import storeIcon from '../assets/store.png'
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 type DashboardPageProps = NativeStackScreenProps<RootParamStack, 'dashboard'>
@@ -25,7 +25,7 @@ export default ({ route, navigation }: DashboardPageProps) => {
         const unselectedColor = isDarkMode ? 'white': 'gray'
         const selectedColor = isDarkMode ? "#f4aac2" : "#f44560"
         return ({ size, focused }) => <Image
-            source={routeName == 'weather' ? weatherIcon : resturantIcon}
+            source={routeName == 'weather' ? weatherIcon : storeIcon}
             style={{ height: size, width: size, tintColor: focused ? selectedColor : unselectedColor }}
         />
     }
@@ -45,9 +45,8 @@ export default ({ route, navigation }: DashboardPageProps) => {
             headerTintColor: isDarkMode ? 'white' : 'black',
             headerStyle: backgroundStyle,
             tabBarStyle: backgroundStyle,
+            tabBarShowLabel: false,
             tabBarIcon: renderTabIcon(tabRoute.name),
-            tabBarActiveTintColor: isDarkMode ? "#f4aac2" : "#f44560",
-            tabBarInactiveTintColor: isDarkMode ? "white" : "gray",
             headerTitle: `Welcome ${route.params.username}`,
             headerRight: () => <TouchableOpacity
                 onPress={signOut}>

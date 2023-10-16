@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View, useColorScheme } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootParamStack } from '../../Main';
 import Textfield from '../common/Textfield';
-import MessageSnack from '../components/MessageSnack';
+import MessageSnack, { MessageSnackHandle } from '../components/MessageSnack';
 import FacebookIcon from '../assets/facebook.png'
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
-import { TextStyle } from '../common/utils';
+import { BackgroundStyle, TextStyle } from '../common/utils';
 
 type AuthPageProps = NativeStackScreenProps<RootParamStack, 'auth'>
 
@@ -17,7 +17,7 @@ export default ({ navigation }: AuthPageProps) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState<string | null>(null)
+    const snackBarRef = useRef<MessageSnackHandle>(null)
     const [facebookSignInLoading, setFacebookSignInLoading] = useState(false)
 
     const navigateToDashBoard = (username: string | null) => {
@@ -31,9 +31,14 @@ export default ({ navigation }: AuthPageProps) => {
         }
     }, [])
 
-    const performPrimaryAction = () => {
+    const performSignInOrRegistration = () => {
+        if(isEmailInvalid) return // common for both paths...
         if (isLoginMode) signIn()
         else registerAccount()
+    }
+
+    const showErrorMessage = (message: string) => {
+        snackBarRef.current?.show(message)
     }
 
     const signIn = () => {
@@ -41,13 +46,52 @@ export default ({ navigation }: AuthPageProps) => {
             .then((result) => {
                 navigateToDashBoard(result.user.displayName)
             })
-            .catch((error) => console.log(error))
+            .catch((error) => {
+                const { code } = error
+                let message: string
+                if (['auth/invalid-login', 'auth/user-not-found', 'auth/wrong-password'].includes(code))
+                    message = 'email or password is incorrect please try again'
+                else message = 'authentication failed'
+                console.log(code)
+                showErrorMessage(message)
+            })
+    }
+
+    const registerAccount = () => {
+        if(!username.length) {
+            showErrorMessage('Provide a username please')
+            return
+        }
+        if (!isPasswordStrong()) {
+            showErrorMessage('Password has to 8 characters long and should include number and capital letter')
+            return
+        }
+        if (password != confirmPassword) {
+            return
+        }
+        if (password != confirmPassword) return
+        auth().createUserWithEmailAndPassword(email, password)
+            .then((result) => {
+                result.user.updateProfile({
+                    displayName: username
+                })
+                navigateToDashBoard(username)
+            })
+            .catch((error) => {
+                const { code } = error
+                let message: string
+                if (code == 'auth/email-already-in-use')
+                    message = 'user already exist with email'
+                else if(code == 'auth/weak-password')
+                    message = 'password is not strong enough'
+                else message = 'resgistration failed'
+                showErrorMessage(message)
+            })
     }
 
     const signInWithFacebook = async () => {
         const result = await LoginManager.logInWithPermissions(['public_profile']);
         if (result.isCancelled) {
-            console.log('User cancelled the login process')
             return
         }
 
@@ -70,11 +114,11 @@ export default ({ navigation }: AuthPageProps) => {
         });
     }
 
-    const swapMode = () => {
+    const swapLoginMode = () => {
         setIsLoginMode(!isLoginMode)
     }
 
-    const isPasswordStrong = () => {
+    const isPasswordStrong = (): boolean => {
         const strengthCheck = {
             upperCase: false,
             includeNumber: false,
@@ -89,35 +133,16 @@ export default ({ navigation }: AuthPageProps) => {
             .reduce((overallScore, currentScore) => overallScore && currentScore, true)
     }
 
-    const validateEmail = (newEmail: string): boolean => {
-        if (!newEmail.length) return false
+    const isEmailInvalid = useMemo(():boolean  => {
+        if (!email.length) return false
         const emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
-        return !emailregex.test(newEmail)
-    }
-
-    const registerAccount = () => {
-        if (!isPasswordStrong()) {
-            setErrorMessage('Password has to 8 characters long and should include number and capital letter')
-            return
-        }
-        if (password != confirmPassword) {
-            setErrorMessage('Password does not match')
-            return
-        }
-        if (!(isPasswordStrong() && password == confirmPassword)) return
-        auth().createUserWithEmailAndPassword(email, password)
-            .then((result) => {
-                result.user.updateProfile({
-                    displayName: username
-                })
-                navigateToDashBoard(username)
-            })
-    }
+        return !emailregex.test(email)
+    }, [email])
 
     const darkMode = useColorScheme() === 'dark'
 
     return <View style={styles.root}>
-        <View style={[styles.cardContent, { backgroundColor: darkMode ? 'black' : 'white' }]}>
+        <View style={BackgroundStyle(darkMode, styles.cardContent)}>
             <View style={styles.innerContent}>
                 <Text style={{ fontSize: 25, color: darkMode ? 'white' : 'black' }}>{`Sign ${isLoginMode ? 'in' : 'up'}`}</Text>
                 {!isLoginMode &&
@@ -125,7 +150,7 @@ export default ({ navigation }: AuthPageProps) => {
                 <Textfield
                     value={email}
                     email
-                    error={validateEmail(email)}
+                    error={isEmailInvalid}
                     errorMessage='Email should be in valid format'
                     setValue={setEmail}
                     label="Email" />
@@ -138,7 +163,7 @@ export default ({ navigation }: AuthPageProps) => {
                         errorMessage='confirm password and password must match'
                         label="Confirm Password" password />}
             </View>
-            <TouchableOpacity onPress={performPrimaryAction} style={styles.primaryButton}>
+            <TouchableOpacity onPress={performSignInOrRegistration} style={styles.primaryButton}>
                 <Text style={{ color: 'white' }}>{`Sign ${isLoginMode ? 'In' : 'Up'}`}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.facebookButton} onPress={signInWithFacebook}>
@@ -157,7 +182,7 @@ export default ({ navigation }: AuthPageProps) => {
             </TouchableOpacity>
             <View style={styles.secondaryOptionPanel}>
                 <Text style={TextStyle(darkMode)}>{isLoginMode ? "No account ?" : "Have account ?"}</Text>
-                <TouchableOpacity onPress={swapMode}>
+                <TouchableOpacity onPress={swapLoginMode}>
                     <Text style={[styles.secondaryButton, { color: darkMode ? '#f4aac2' : '#b13354' }]}>{isLoginMode ? "Register" : "Login instead"}</Text>
                 </TouchableOpacity>
             </View>
@@ -165,8 +190,7 @@ export default ({ navigation }: AuthPageProps) => {
         <View>
         </View>
         <MessageSnack
-            message={errorMessage}
-            setMessage={setErrorMessage}
+            ref={snackBarRef}
             duration={5000}
         />
     </View>

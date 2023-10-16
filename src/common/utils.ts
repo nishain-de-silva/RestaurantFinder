@@ -9,9 +9,16 @@ export const SnackBarService = {
     }
 }
 
+export function BackgroundStyle(isDarkMode: boolean, originalStyle: any) {
+    return [originalStyle, { backgroundColor: isDarkMode ? 'black' : 'white' }]
+}
+
+export function ImageStyle(isDarkMode: boolean, originalStyle: any) {
+    return isDarkMode ? [originalStyle, { tintColor: 'white' }] : originalStyle
+}
+
 export function TextStyle(isDarkMode: boolean, originalStyle: any|null = null) {
     if(originalStyle != null) {
-        originalStyle.color = isDarkMode ? 'white' : 'black'
         return [originalStyle, { color: isDarkMode ? 'white' : 'black' }]
     }
     return ({

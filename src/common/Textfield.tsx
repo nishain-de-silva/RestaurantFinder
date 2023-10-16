@@ -25,7 +25,7 @@ export default forwardRef<TextInput, TextFieldProps>(({ value,
         <Text style={TextStyle(isDarkMode)}>{label}</Text>
         <View style={styles.textInputWrapper}>
             <TextInput ref={ref} style={[styles.inputField, { 
-                backgroundColor: isDarkMode ? '#2a2a2a' : 'white',
+                backgroundColor: isDarkMode ? '#2a2a2a' : '#e6eae7',
                 color: isDarkMode ? 'white' : 'black'
             }]}
                 secureTextEntry={password}
@@ -56,8 +56,6 @@ const styles = StyleSheet.create({
     inputField: {
         flex: 1,
         padding: 12,
-        borderColor: 'black',
-        borderWidth: 1,
         borderRadius: 10
     }
 })

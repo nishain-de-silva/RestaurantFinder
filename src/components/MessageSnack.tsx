@@ -1,24 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { useColor, useTextColor } from "../common/utils";
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 export type MessageSnackProps = {
-    message: string | null,
-    duration?: number,
-    setMessage: (message: string | null) => void
+    duration?: number
 }
-export default ({ message, setMessage, duration = 2000 }: MessageSnackProps) => {
-    useEffect(() => {
-        if (message != null && message.length > 0) {
+
+export type MessageSnackHandle = {
+    show: (newMessage: string) => void
+}
+export default  forwardRef<MessageSnackHandle, MessageSnackProps>(({ duration = 2000 }, ref) => {
+    const [message, setMessage] = useState<string|null>(null)
+    useImperativeHandle(ref, () => ({
+        show: (newMessage) => {
+            setMessage(newMessage)
             setTimeout(() => {
                 setMessage(null)
             }, duration)
         }
-    }, [message])
-
-    return !!message ? <View style={styles.snackbarContainer}>
+    }))
+    
+    const isDarkMode = useColorScheme() === 'dark'
+    return !!message ? <View style={[styles.snackbarContainer, {
+        backgroundColor: isDarkMode ? '#001e38' : 'black'
+    }]}>
         <Text style={styles.snackbarText}>{message}</Text>
     </View> : null
-}
+})
 
 const styles = StyleSheet.create({
     snackbarText: {
@@ -28,7 +34,6 @@ const styles = StyleSheet.create({
     },
     snackbarContainer: {
         flexDirection: 'row',
-        backgroundColor: 'black',
         color: 'white',
         padding: 15,
         alignSelf: 'stretch',

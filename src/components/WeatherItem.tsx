@@ -6,7 +6,7 @@ import sun from "../assets/sun.png"
 import night from "../assets/night.png"
 import wind from "../assets/wind.png"
 import compass from "../assets/compass.png"
-import { TextStyle } from "../common/utils";
+import { BackgroundStyle, ImageStyle, TextStyle } from "../common/utils";
 
 type WeatherItemParams = {
     item: ForcastParameters
@@ -15,9 +15,9 @@ type WeatherItemParams = {
 export default ({ item }: WeatherItemParams) => {
     const isDarkMode = useColorScheme() === 'dark'
     const temperatureTextStyle = TextStyle(isDarkMode, styles.temperature)
-    const smallIconStyle = [styles.smallIcon, { tintColor: isDarkMode ? 'white' : 'black' }]
+    const smallIconStyle = ImageStyle(isDarkMode, styles.smallIcon)
 
-    return <View style={[styles.container, { backgroundColor: isDarkMode ? 'black' : 'white' }]}>
+    return <View style={BackgroundStyle(isDarkMode, styles.container)}>
         <View style={styles.temperatureRow}>
             <View style={styles.temperatureCell}>
                 <Image source={morning} style={styles.temperatureIcon} />

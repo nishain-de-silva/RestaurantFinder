@@ -1,27 +1,32 @@
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import React, { useEffect, useRef, useState } from "react"
-import { StyleSheet, Text, View } from "react-native"
+import { FlatList, ListRenderItem, StyleSheet, Text, View } from "react-native"
 import { DashboardNavigatorScreenProps } from "./Dashboard"
 import GetLocation from 'react-native-get-location'
-import MapView, { LatLng, Marker } from "react-native-maps"
+import MapView, { LatLng, MapMarker, Marker } from "react-native-maps"
 import axios, { Axios } from "axios"
 import Config from '../Config'
 import sampleData from '../assets/restuarantsSampleData.json'
+import RestuarantItem, { ResturantDisplayOverlayHandle } from "../components/ResturantDisplayOverlay"
+import ResturantDisplayOverlay from "../components/ResturantDisplayOverlay"
 
-type ResturantDetailScreenProps = BottomTabScreenProps<DashboardNavigatorScreenProps, 'resturants'>
 type CurrentLocationType = {
     latitude: number,
     longitude: number
 }
 
-type RestuarantParameters = {
+export type RestuarantParameters = {
     position: LatLng,
-    name: string
+    name: string,
+    rating: number,
+    totalRating: number
 }
 export default () => {
     const [currentLocation, setCurrentLocation] = useState<CurrentLocationType | null>(null)
     const [restuarants, setRestuarants] = useState<RestuarantParameters[]>([])
     const mapRef = useRef<MapView | null>(null)
+    const overlayRef = useRef<ResturantDisplayOverlayHandle>(null)
+
     const loadBasedOnData = async () => {
         const locationInfo = await GetLocation.getCurrentPosition({
             enableHighAccuracy: true,
@@ -43,7 +48,9 @@ export default () => {
                 latitude: restuarant.geometry.location.lat,
                 longitude: restuarant.geometry.location.lng,
             },
-            name: restuarant.name
+            name: restuarant.name,
+            rating: restuarant.rating,
+            totalRating: restuarant.user_ratings_total,
         } as RestuarantParameters))
         setRestuarants(parsedData)
         mapRef.current?.fitToCoordinates(parsedData.map((data) => data.position))
@@ -54,6 +61,13 @@ export default () => {
         loadBasedOnData()
     }, [])
 
+
+    const onPressMarker = (item: RestuarantParameters) => {
+        return () => {
+            overlayRef.current?.open(item)
+        }
+    }
+
     return <View style={{ flex: 1 }}>
         <MapView
             ref={mapRef}
@@ -61,7 +75,6 @@ export default () => {
             showsUserLocation={true}
             zoomControlEnabled={true}
             zoomEnabled={true}
-             
             showsBuildings={true}
             initialRegion={currentLocation ? {
                 latitude: currentLocation.latitude,
@@ -72,9 +85,12 @@ export default () => {
         >
             {restuarants.map((resturant, index) => (
                 <Marker
+                    onPress={onPressMarker(resturant)}
+                    key={`marker${index}`}
                     id={`marker${index}`}
                     coordinate={resturant.position}
                 />))}
         </MapView>
+            <RestuarantItem ref={overlayRef} />
     </View>
 }
